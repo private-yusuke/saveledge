@@ -2,4 +2,4 @@
 
 日記帳です。
 
-![Screenshot](wiki/images/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/wiki/private-yusuke/saveledge/images/screenshot.png)

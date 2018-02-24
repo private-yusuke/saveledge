@@ -1,5 +1,7 @@
 #include "diary.h"
 
+QString diary::errorString;
+
 diary::diary()
 {
 
@@ -11,7 +13,7 @@ QString diary::getTodayDateString()
 }
 QString diary::getTodayFilename()
 {
-    return "diary/" + getTodayDateString() + ".txt";
+    return QString(QCoreApplication::applicationDirPath() + "/diary/" + getTodayDateString() + ".txt");
 }
 bool diary::isSavedToday()
 {
@@ -25,7 +27,9 @@ bool diary::saveDiary(QString text)
         QDir().mkdir("diary");
     }
     QFile file(getTodayFilename());
+    qDebug() << getTodayFilename();
     if(!file.open(QIODevice::WriteOnly)) {
+        errorString = file.errorString();
         return false;
     }
     QTextStream out(&file);

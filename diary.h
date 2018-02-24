@@ -6,6 +6,7 @@
 class diary
 {
 public:
+    static QString errorString;
     diary();
     static QString getTodayDateString();
     static QString getTodayFilename();

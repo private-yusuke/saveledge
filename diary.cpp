@@ -22,9 +22,9 @@ bool diary::isSaved(const QDate &date)
 
 bool diary::saveDiary(const QDate &date, QString text)
 {
-    QDir rootdir("diary");
-    if(!QDir().exists("diary")) {
-        QDir().mkdir("diary");
+    QString rootdir = QCoreApplication::applicationDirPath() + "/diary";
+    if(!QDir().exists(rootdir)) {
+        QDir().mkdir(rootdir);
     }
     QFile file(getFilename(date));
     qDebug() << getFilename(date);

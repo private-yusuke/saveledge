@@ -7,27 +7,27 @@ diary::diary()
 
 }
 
-QString diary::getTodayDateString()
+QString diary::getDateString(const QDate &date)
 {
-    return QDateTime::currentDateTime().toString("yyyy-MM-dd");
+    return date.toString("yyyy-MM-dd");
 }
-QString diary::getTodayFilename()
+QString diary::getFilename(const QDate &date)
 {
-    return QString(QCoreApplication::applicationDirPath() + "/diary/" + getTodayDateString() + ".txt");
+    return QString(QCoreApplication::applicationDirPath() + "/diary/" + getDateString(date) + ".txt");
 }
-bool diary::isSavedToday()
+bool diary::isSaved(const QDate &date)
 {
-    return QFile(getTodayFilename()).exists();
+    return QFile(getFilename(date)).exists();
 }
 
-bool diary::saveDiary(QString text)
+bool diary::saveDiary(const QDate &date, QString text)
 {
     QDir rootdir("diary");
     if(!QDir().exists("diary")) {
         QDir().mkdir("diary");
     }
-    QFile file(getTodayFilename());
-    qDebug() << getTodayFilename();
+    QFile file(getFilename(date));
+    qDebug() << getFilename(date);
     if(!file.open(QIODevice::WriteOnly)) {
         errorString = file.errorString();
         return false;
@@ -37,9 +37,9 @@ bool diary::saveDiary(QString text)
     return true;
 }
 
-QString diary::getDiary()
+QString diary::getDiary(const QDate &date)
 {
-    QFile file(getTodayFilename());
+    QFile file(getFilename(date));
     if(!file.open(QIODevice::ReadOnly)) return "";
     return file.readAll();
 }

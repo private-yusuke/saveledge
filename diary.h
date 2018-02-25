@@ -8,11 +8,11 @@ class diary
 public:
     static QString errorString;
     diary();
-    static QString getTodayDateString();
-    static QString getTodayFilename();
-    static bool isSavedToday();
-    static bool saveDiary(QString text);
-    static QString getDiary();
+    static QString getDateString(const QDate &date);
+    static QString getFilename(const QDate &date);
+    static bool isSaved(const QDate &date);
+    static bool saveDiary(const QDate &date, QString text);
+    static QString getDiary(const QDate &date);
 };
 
 #endif // DIARY_H

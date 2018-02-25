@@ -15,12 +15,18 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void saveDiary();
+    void saveDiary(const QDate &date);
+    QDate editingDate;
+    bool isEdited;
 
 private slots:
     void on_saveButton_clicked();
 
     void on_actionSave_triggered();
+
+    void on_calendarWidget_activated(const QDate &date);
+
+    void on_textEdit_textChanged();
 
 private:
     Ui::MainWindow *ui;

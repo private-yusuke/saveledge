@@ -2,5 +2,5 @@
 
 日記帳です。
 
-![Screenshot](https://raw.githubusercontent.com/wiki/private-yusuke/saveledge/images/screenshot.png)
-![Screenshot_win](https://raw.githubusercontent.com/wiki/private-yusuke/saveledge/images/screenshot_win.png)
+![Screenshot on Mac on v1.1.0](https://raw.githubusercontent.com/wiki/private-yusuke/saveledge/images/mac-screenshot-1.1.0.png)
+![Screenshot on Windows on v1.1.0](https://raw.githubusercontent.com/wiki/private-yusuke/saveledge/images/win-screenshot-1.1.0.png)

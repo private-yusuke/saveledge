@@ -40,9 +40,8 @@
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="27"/>
         <source>Unable to save today&apos;s diary</source>
-        <translation>今日の日記を保存できませんでした。</translation>
+        <translation type="vanished">今日の日記を保存できませんでした。</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="28"/>

@@ -40,9 +40,8 @@
         <translation>error</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="27"/>
         <source>Unable to save today&apos;s diary</source>
-        <translation>Unable to save today&apos;s diary.</translation>
+        <translation type="vanished">Unable to save today&apos;s diary.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="28"/>

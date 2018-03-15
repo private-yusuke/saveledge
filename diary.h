@@ -2,6 +2,7 @@
 #define DIARY_H
 
 #include <QtWidgets>
+#include <QStandardPaths>
 
 class diary
 {

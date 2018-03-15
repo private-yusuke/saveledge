@@ -13,7 +13,7 @@ QString diary::getDateString(const QDate &date)
 }
 QString diary::getFilename(const QDate &date)
 {
-    return QString(QCoreApplication::applicationDirPath() + "/diary/" + getDateString(date) + ".txt");
+    return QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+ "/saveledge/diary/" + getDateString(date) + ".txt");
 }
 bool diary::isSaved(const QDate &date)
 {
@@ -22,12 +22,22 @@ bool diary::isSaved(const QDate &date)
 
 bool diary::saveDiary(const QDate &date, QString text)
 {
-    QString rootdir = QCoreApplication::applicationDirPath() + "/diary";
+    QString rootdir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    QString saveledgedir = rootdir+"/saveledge";
+    QString diarydir = saveledgedir+"/diary";
+
     if(!QDir().exists(rootdir)) {
         QDir().mkdir(rootdir);
     }
+    if(!QDir().exists(saveledgedir)) {
+        QDir().mkdir(saveledgedir);
+    }
+    if(!QDir().exists(diarydir)) {
+        QDir().mkdir(diarydir);
+    }
     QFile file(getFilename(date));
     qDebug() << getFilename(date);
+    qDebug() << QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
     if(!file.open(QIODevice::WriteOnly)) {
         errorString = file.errorString();
         return false;

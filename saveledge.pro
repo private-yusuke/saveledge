@@ -45,3 +45,7 @@ RESOURCES += \
         saveledge_ja.qm
 
 ICON = saveledge.icns
+
+ios {
+    QMAKE_ASSET_CATALOGS += ios/Assets.xcassets
+}

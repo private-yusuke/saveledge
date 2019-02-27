@@ -5,6 +5,7 @@
 
 QDate editingDate;
 bool isEdited = false;
+QTextCharFormat editedDateFormat;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,7 +16,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->dateLabel->setText(diary::getDateString(this->editingDate));
     ui->textEdit->setPlainText(diary::getDiary(this->editingDate));
     this->isEdited = false;
+    editedDateFormat = QTextCharFormat();
+    editedDateFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
     //ui->actionSave->setShortcut(QKeySequence::Save);
+    foreach(auto v, diary::getSavedDate()) {
+        v.chop(4);
+        auto date = QDate::fromString(v, "yyyy-MM-dd");
+        qDebug() << "format: " << date;
+        this->ui->calendarWidget->setDateTextFormat(date, editedDateFormat);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -34,6 +43,7 @@ void MainWindow::saveDiary(const QDate &date)
     } else {
         ui->statusBar->showMessage(tr("Saved!"), 5*1000);
         this->isEdited = false;
+        ui->calendarWidget->setDateTextFormat(date, editedDateFormat);
     }
     //QMessageBox::information(this, tr("error"), QFileInfo(diary::getTodayDateString()).absoluteFilePath());
 }

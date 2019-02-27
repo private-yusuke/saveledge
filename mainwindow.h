@@ -18,6 +18,7 @@ public:
     void saveDiary(const QDate &date);
     QDate editingDate;
     bool isEdited;
+    QTextCharFormat editedDateFormat;
 
 private slots:
     void on_saveButton_clicked();

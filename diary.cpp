@@ -53,3 +53,10 @@ QString diary::getDiary(const QDate &date)
     if(!file.open(QIODevice::ReadOnly)) return "";
     return file.readAll();
 }
+
+QStringList diary::getSavedDate()
+{
+    auto dir = QDir();
+    dir.cd(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+ "/saveledge/diary/"));
+    return dir.entryList(QDir::Filter::Files);
+}

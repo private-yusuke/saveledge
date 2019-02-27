@@ -59,9 +59,8 @@ void MainWindow::on_actionSave_triggered()
     this->isEdited = false;
 }
 
-void MainWindow::on_calendarWidget_activated(const QDate &date)
+int MainWindow::checkSaved()
 {
-    qDebug() << date;
     if(this->isEdited) {
         QMessageBox msgBox(this);
         msgBox.setText(tr("Changes you made may not be saved. Do you want to save your changes?"));
@@ -75,8 +74,13 @@ void MainWindow::on_calendarWidget_activated(const QDate &date)
 
         int res = msgBox.exec();
         if(res == QMessageBox::Yes) saveDiary(this->editingDate);
-        else if(res == QMessageBox::Cancel) return;
+        return res;
     }
+}
+
+void MainWindow::on_calendarWidget_activated(const QDate &date)
+{
+    checkSaved();
 
     this->ui->dateLabel->setText(diary::getDateString(date));
     this->editingDate = date;
@@ -87,4 +91,9 @@ void MainWindow::on_calendarWidget_activated(const QDate &date)
 void MainWindow::on_textEdit_textChanged()
 {
     this->isEdited = true;
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    if(checkSaved() != QMessageBox::Cancel) QApplication::exit();
 }

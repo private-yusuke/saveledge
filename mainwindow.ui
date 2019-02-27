@@ -21,7 +21,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
       <widget class="QCalendarWidget" name="calendarWidget"/>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLabel" name="dateLabel">
@@ -83,6 +83,7 @@
      <string>Edit</string>
     </property>
     <addaction name="actionSave"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuEdit"/>
   </widget>
@@ -96,6 +97,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

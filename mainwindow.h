@@ -29,8 +29,11 @@ private slots:
 
     void on_textEdit_textChanged();
 
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
+    int checkSaved();
 };
 
 #endif // MAINWINDOW_H

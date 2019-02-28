@@ -9,23 +9,44 @@
         <translation>Saveledge</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="58"/>
-        <location filename="mainwindow.ui" line="91"/>
+        <location filename="mainwindow.ui" line="83"/>
+        <location filename="mainwindow.ui" line="120"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="79"/>
+        <location filename="mainwindow.ui" line="106"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="94"/>
+        <location filename="mainwindow.ui" line="123"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="29"/>
+        <location filename="mainwindow.ui" line="128"/>
+        <source>Exit</source>
+        <translation>終了</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="131"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="136"/>
+        <location filename="mainwindow.cpp" line="22"/>
+        <source>Change Controller</source>
+        <translation>表示形式の変更</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="139"/>
+        <source>Ctrl+L</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="50"/>
         <source>Good job!</source>
         <translation>いいね！</translation>
     </message>
@@ -34,7 +55,7 @@
         <translation type="vanished">今日はじめての保存です！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="32"/>
+        <location filename="mainwindow.cpp" line="54"/>
         <source>error</source>
         <translation>エラー</translation>
     </message>
@@ -43,42 +64,42 @@
         <translation type="vanished">今日の日記を保存できませんでした。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="29"/>
+        <location filename="mainwindow.cpp" line="50"/>
         <source>This will be the first time you write your diary on %1.</source>
         <translation>%1に初めての保存です！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="33"/>
+        <location filename="mainwindow.cpp" line="55"/>
         <source>Unable to save today&apos;s diary.</source>
         <translation>今日の日記を保存できませんでした。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="35"/>
+        <location filename="mainwindow.cpp" line="57"/>
         <source>Saved!</source>
         <translation>保存されました！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="57"/>
+        <location filename="mainwindow.cpp" line="80"/>
         <source>Changes you made may not be saved. Do you want to save your changes?</source>
         <translation>変更が保存されていません。保存しますか？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="58"/>
+        <location filename="mainwindow.cpp" line="81"/>
         <source>Are you sure?</source>
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="61"/>
+        <location filename="mainwindow.cpp" line="84"/>
         <source>Yes</source>
         <translation>はい</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="62"/>
+        <location filename="mainwindow.cpp" line="85"/>
         <source>No</source>
         <translation>いいえ</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="63"/>
+        <location filename="mainwindow.cpp" line="86"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>

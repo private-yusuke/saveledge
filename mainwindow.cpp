@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     editedDateFormat = QTextCharFormat();
     editedDateFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
 
+    this->ui->actionChange_Controller->setText(tr("Change Controller"));
     initCalendar();
 }
 

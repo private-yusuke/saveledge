@@ -15,6 +15,7 @@ public:
     static bool saveDiary(const QDate &date, QString text);
     static QString getDiary(const QDate &date);
     static QStringList getSavedDate();
+    static QString getDiaryFirstLine(const QDate &date);
 
 
 };

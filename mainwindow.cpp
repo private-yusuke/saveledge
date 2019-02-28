@@ -18,13 +18,24 @@ MainWindow::MainWindow(QWidget *parent) :
     this->isEdited = false;
     editedDateFormat = QTextCharFormat();
     editedDateFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
-    //ui->actionSave->setShortcut(QKeySequence::Save);
+
+    initCalendar();
+}
+
+void MainWindow::initCalendar()
+{
+    auto *model = new QStringListModel();
+    QStringList qlist;
+
     foreach(auto v, diary::getSavedDate()) {
         v.chop(4);
         auto date = QDate::fromString(v, "yyyy-MM-dd");
         qDebug() << "format: " << date;
         this->ui->calendarWidget->setDateTextFormat(date, editedDateFormat);
+        qlist << QString(date.toString("yyyy/MM/dd") + " " + diary::getDiaryFirstLine(date));
     }
+    model->setStringList(qlist);
+    this->ui->listView->setModel(model);
 }
 
 MainWindow::~MainWindow()
@@ -36,6 +47,7 @@ void MainWindow::saveDiary(const QDate &date)
 {
     if(!diary::isSaved(date)) {
         QMessageBox::information(this, tr("Good job!"), tr("This will be the first time you write your diary on %1.").arg(diary::getDateString(this->editingDate)));
+
     }
     if(!diary::saveDiary(this->editingDate, ui->textEdit->toPlainText())) {
         QMessageBox::warning(this, tr("error"), diary::errorString);
@@ -45,6 +57,7 @@ void MainWindow::saveDiary(const QDate &date)
         this->isEdited = false;
         ui->calendarWidget->setDateTextFormat(date, editedDateFormat);
     }
+    initCalendar();
     //QMessageBox::information(this, tr("error"), QFileInfo(diary::getTodayDateString()).absoluteFilePath());
 }
 void MainWindow::on_saveButton_clicked()
@@ -81,7 +94,11 @@ int MainWindow::checkSaved()
 void MainWindow::on_calendarWidget_activated(const QDate &date)
 {
     checkSaved();
+    loadDiary(date);
+}
 
+void MainWindow::loadDiary(const QDate &date)
+{
     this->ui->dateLabel->setText(diary::getDateString(date));
     this->editingDate = date;
     this->ui->textEdit->setText(diary::getDiary(date));
@@ -96,4 +113,16 @@ void MainWindow::on_textEdit_textChanged()
 void MainWindow::on_actionExit_triggered()
 {
     if(checkSaved() != QMessageBox::Cancel) QApplication::exit();
+}
+
+void MainWindow::on_actionChange_Controller_triggered()
+{
+    this->ui->stackedWidget->setCurrentIndex(this->ui->stackedWidget->currentIndex() ^ 1);
+}
+
+void MainWindow::on_listView_clicked(const QModelIndex &index)
+{
+    if(checkSaved() == QMessageBox::Cancel) return;
+    auto str = this->ui->listView->model()->data(index).toString().left(10);
+    loadDiary(QDate::fromString(str, "yyyy/MM/dd"));
 }

@@ -60,3 +60,17 @@ QStringList diary::getSavedDate()
     dir.cd(QString(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+ "/saveledge/diary/"));
     return dir.entryList(QDir::Filter::Files);
 }
+
+QString diary::getDiaryFirstLine(const QDate &date)
+{
+    QString res;
+    QFile file(getFilename(date));
+    if(file.open(QFile::OpenModeFlag::ReadOnly)) {
+        QTextStream t(&file);
+        res = t.readLine();
+        file.close();
+    } else {
+        res = file.errorString();
+    }
+    return res;
+}

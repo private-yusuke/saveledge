@@ -16,6 +16,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void saveDiary(const QDate &date);
+    void loadDiary(const QDate &date);
+    void initCalendar();
     QDate editingDate;
     bool isEdited;
     QTextCharFormat editedDateFormat;
@@ -30,6 +32,10 @@ private slots:
     void on_textEdit_textChanged();
 
     void on_actionExit_triggered();
+
+    void on_actionChange_Controller_triggered();
+
+    void on_listView_clicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;

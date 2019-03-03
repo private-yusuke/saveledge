@@ -90,6 +90,7 @@ int MainWindow::checkSaved()
         if(res == QMessageBox::Yes) saveDiary(this->editingDate);
         return res;
     }
+    return QMessageBox::Ok;
 }
 
 void MainWindow::on_calendarWidget_activated(const QDate &date)

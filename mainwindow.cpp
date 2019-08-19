@@ -32,9 +32,11 @@ void MainWindow::initCalendar()
         v.chop(4);
         auto date = QDate::fromString(v, "yyyy-MM-dd");
         qDebug() << "format: " << date;
+        if(!date.isValid()) continue;
         this->ui->calendarWidget->setDateTextFormat(date, editedDateFormat);
         qlist << QString(date.toString("yyyy/MM/dd") + " " + diary::getDiaryFirstLine(date));
     }
+    if(qlist.isEmpty()) qlist << QString(tr("Let's write your diary!"));
     model->setStringList(qlist);
     this->ui->listView->setModel(model);
 }
@@ -101,6 +103,7 @@ void MainWindow::on_calendarWidget_activated(const QDate &date)
 
 void MainWindow::loadDiary(const QDate &date)
 {
+    if(!date.isValid()) return;
     this->ui->dateLabel->setText(diary::getDateString(date));
     this->editingDate = date;
     this->ui->textEdit->setText(diary::getDiary(date));

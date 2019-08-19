@@ -38,11 +38,12 @@ bool diary::saveDiary(const QDate &date, QString text)
     QFile file(getFilename(date));
     qDebug() << getFilename(date);
     qDebug() << QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    if(!file.open(QIODevice::WriteOnly)) {
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         errorString = file.errorString();
         return false;
     }
     QTextStream out(&file);
+    out.setCodec("UTF-8");
     out << text;
     return true;
 }
@@ -50,7 +51,7 @@ bool diary::saveDiary(const QDate &date, QString text)
 QString diary::getDiary(const QDate &date)
 {
     QFile file(getFilename(date));
-    if(!file.open(QIODevice::ReadOnly)) return "";
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text) || !file.exists()) return "";
     return file.readAll();
 }
 
@@ -65,12 +66,13 @@ QString diary::getDiaryFirstLine(const QDate &date)
 {
     QString res;
     QFile file(getFilename(date));
-    if(file.open(QFile::OpenModeFlag::ReadOnly)) {
+    if(file.open(QFile::OpenModeFlag::ReadOnly) | QFile::OpenModeFlag::Text) {
         QTextStream t(&file);
+        t.setCodec("UTF-8");
         res = t.readLine();
         file.close();
     } else {
-        res = file.errorString();
+        res = "";
     }
     return res;
 }
